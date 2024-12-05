@@ -1,0 +1,10 @@
+spring.application.name=demo
+
+spring.main.banner-mode=off
+spring.datasource.username=root
+spring.datasource.password=Pa$$w0rd
+
+server.name=myserver
+
+
+spring.profiles.active=prod

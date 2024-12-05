@@ -1,0 +1,4 @@
+spring.application.name=doctor-find-doctor-by-doctor-id
+
+server.port=8082
+

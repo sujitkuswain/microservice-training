@@ -1,0 +1,62 @@
+package com.example.demo.pojo;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "hospital")
+public class Hospital {
+	
+	@Id
+	@Column(name = "hospitalRegistrationId")
+	private int hospitalRegistrationId;
+	@Column(name = "hospitalName")
+	private String hospitalName;
+	@Column(name = "hospitalAddress")
+	private String hospitalAddress;
+
+	public Hospital() {
+	}
+
+	public Hospital(int hospitalRegistrationId, String hospitalName, String hospitalAddress) {
+		super();
+		this.hospitalRegistrationId = hospitalRegistrationId;
+		this.hospitalName = hospitalName;
+		this.hospitalAddress = hospitalAddress;
+	}
+
+	public int getHospitalRegistrationId() {
+		return hospitalRegistrationId;
+	}
+
+	public void setHospitalRegistrationId(int hospitalRegistrationId) {
+		this.hospitalRegistrationId = hospitalRegistrationId;
+	}
+
+	public String getHospitalName() {
+		return hospitalName;
+	}
+
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+
+	public String getHospitalAddress() {
+		return hospitalAddress;
+	}
+
+	public void setHospitalAddress(String hospitalAddress) {
+		this.hospitalAddress = hospitalAddress;
+	}
+
+	@Override
+	public String toString() {
+		return "Hospital [hospitalRegistrationId=" + hospitalRegistrationId + ", hospitalName=" + hospitalName
+				+ ", hospitalAddress=" + hospitalAddress + "]";
+	}
+
+	
+
+}

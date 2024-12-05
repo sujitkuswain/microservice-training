@@ -1,0 +1,44 @@
+package com.example.demo.controller;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.example.demo.pojo.Doctor;
+import com.example.demo.pojo.Hospital;
+import com.example.demo.repository.HospitalRepo;
+
+@RestController
+public class HospitalController {
+
+	@Autowired
+	HospitalRepo hospitalRepo;
+
+	@GetMapping("/hospitals/{hospitalId}")
+	public ResponseEntity<Hospital> findAllDoctorInHospital(@PathVariable int hospitalId) {
+
+		Hospital hospital = hospitalRepo.findHospitalById(hospitalId);
+
+		if (hospital == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+
+		
+		if (hospital != null) {
+			RestTemplate restTemplate = new RestTemplate();
+			ResponseEntity<Doctor[]> entity= restTemplate.getForEntity("localhost:8083/doctors/{hospitalId}", Doctor[].class, hospitalId);
+			hospital.setDoctors(Arrays.asList(entity.getBody()));
+			
+			return ResponseEntity<Hospital> (hospital, HttpStatus.OK);
+		}
+
+	}
+
+}

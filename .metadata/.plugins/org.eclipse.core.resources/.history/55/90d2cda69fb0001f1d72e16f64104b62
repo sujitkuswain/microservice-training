@@ -1,0 +1,38 @@
+package com.example.demo.service;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.pojo.Customer;
+
+@Service
+public class CustomerService {
+	
+	private List<Customer> customers = new ArrayList<Customer>();
+	
+	Customer customerArray[] = {
+			new Customer(1L, "customer1", "c1@gmail.com"),
+			new Customer(2L, "customer2", "c2@gmail.com"),
+			new Customer(3L, "customer3", "c3@gmail.com")
+	};
+	
+	public CustomerService() {
+		customers = Arrays.asList(customerArray);
+	}
+	
+	public List<Customer> findAll(){
+		return customers;
+	}
+	
+	public Customer findById(Long id) {
+	    return customers.stream()
+                .filter(customer -> customer.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+	}
+
+	
+}

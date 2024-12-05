@@ -1,0 +1,7 @@
+package com.example.demo.feign;
+
+public interface Hospital_Doctor_Feign {
+	
+	
+
+}

@@ -1,0 +1,28 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.dao.DoctorDAO;
+
+@RestController
+public class DoctorController {
+
+	@Autowired
+	DoctorDAO doctorDAO;
+
+	@GetMapping("/hospitals/{hospitalId}")
+	public ResponseEntity<?> findAllDoctorInHospital(@PathVariable int hospitalId) {
+		// Fetch the hospital by ID
+		return hospitalRepo.findById(hospitalId).map(hospital -> {
+			List<?> doctors = hospital.getDoctors(); // Get the list of associated doctors
+			return ResponseEntity.ok(doctors); // Return doctors as the response
+		}).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body("Hospital not found"));
+	}
+}

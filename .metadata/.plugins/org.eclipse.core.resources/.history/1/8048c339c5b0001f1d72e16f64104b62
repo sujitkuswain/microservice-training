@@ -1,0 +1,47 @@
+package com.example.demo.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.pojo.Customer;
+import com.example.demo.repository.CustomerRepository;
+
+@Service
+public class CustomerService {
+	@Autowired
+	private CustomerRepository customerRepository;
+	
+	public List<Customer> getAllCustomer(){
+		return customerRepository.findAll();
+	}
+	
+		
+	public Optional<Customer> findCustomerById(Long id){
+		return customerRepository.findById(id);
+	}
+	
+	public Customer saveCustomer(Customer customer) {
+		return customerRepository.save(customer);
+	}
+	
+	public void deleteCustomerById(Long id) {
+		customerRepository.deleteById(id);
+	}
+
+//	
+//	public Optional<Customer> updateCustomer(Long id, Customer c) {
+//		int rowsUpdated = jdbcTemplate.update("update customers set name=?, email=? where id=?", c.getName(), c.getEmail(), id);
+//	    
+//		if (rowsUpdated > 0) {
+//	        return findById(id); 
+//	    } else {
+//	        return Optional.empty(); 
+//	    }
+//	}
+//	
+
+
+}

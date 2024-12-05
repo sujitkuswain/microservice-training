@@ -1,0 +1,11 @@
+spring.application.name=doctor-find-all
+
+server.port=8083
+
+spring.datasource.url=jdbc:mysql://localhost:3306/doctors
+spring.datasource.username=root
+spring.datasource.password=Pa$$w0rd
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=true
+spring.sql.init.mode=always

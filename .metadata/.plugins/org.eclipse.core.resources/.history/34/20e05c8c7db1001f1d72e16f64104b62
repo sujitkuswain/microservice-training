@@ -1,0 +1,4 @@
+spring.application.name=microservice1
+
+#microservice1.name=testname
+#microservice1.phoneno=12345
