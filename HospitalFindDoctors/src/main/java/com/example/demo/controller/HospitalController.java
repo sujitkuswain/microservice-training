@@ -55,7 +55,7 @@ public class HospitalController {
 	}
 
 	@GetMapping("/hospitals-feign/{hospitalId}")
-	@CircuitBreaker(name = "circuitbreaker-for-doctor", fallbackMethod = "fallBackMethod")
+//	@CircuitBreaker(name = "circuitbreaker-for-doctor", fallbackMethod = "fallBackMethod")
 	public ResponseEntity<Hospital> findAllDoctorInHospital_Feign(@PathVariable int hospitalId) {
 
 		Hospital hospital = hospitalRepo.findHospitalById(hospitalId);

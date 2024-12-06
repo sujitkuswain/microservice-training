@@ -15,6 +15,10 @@ import com.example.demo.pojo.Doctor;
 import com.example.demo.repository.DoctorRepository;
 import com.example.demo.service.DoctorService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @RequestMapping("/doctor")
 public class DoctorController {
@@ -24,13 +28,29 @@ public class DoctorController {
 	
 	@Autowired
 	DoctorRepository repo;
-
+	
 	@GetMapping
-	public List<Doctor> getCustomers() {
+	public List<Doctor> getDoctors() {
 		return doctorService.getAllDoctors();
 	}
+
+//	@GetMapping
+//	public List<Doctor> getDoctors(@RequestHeader(name="sort", defaultValue="all") String sort) {
+//		System.out.println("Found header:" + sort);
+//		return doctorService.getAllDoctors();
+//	}
 	
+//	@GetMapping
+//	public List<Doctor> getDoctors(@RequestParam(name="dept") String dept) {
+//		System.out.println("Found param:" + dept);
+//		return doctorService.getAllDoctors();
+//	}
 	
+	@Operation(summary="Get hostpial doctors by id")
+	@ApiResponses(value= {
+			@ApiResponse(responseCode="200", description="Success"),
+			@ApiResponse(responseCode="400", description="Invalid")
+	})
 	@GetMapping("/doctors/{hospitalId}")
 	public ResponseEntity<List<Doctor>> findAllDoctorByHospitalId(@PathVariable int hospitalId){
 		List<Doctor> doctors = new ArrayList<>(); 

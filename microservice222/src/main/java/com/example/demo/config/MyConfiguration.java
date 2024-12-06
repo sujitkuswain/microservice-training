@@ -5,12 +5,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix="microservice222")
+//@ConfigurationProperties(prefix="microservice222")
 public class MyConfiguration {
 
 	private String name;
 	private int phoneno;
-	@Value("${custom.commonproperty}")
+//	@Value("${custom.commonproperty}")
 	private String commonVar;
 	public String getName() {
 		return name;

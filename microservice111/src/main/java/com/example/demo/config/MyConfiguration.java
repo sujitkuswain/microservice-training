@@ -1,16 +1,21 @@
 package com.example.demo.config;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
-@ConfigurationProperties(prefix="microservice111")
+//@ConfigurationProperties(prefix="microservice111")
 public class MyConfiguration {
+	
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
 	private String name;
 	private int phoneno;
-	@Value("${custom.commonproperty}")
+//	@Value("${custom.commonproperty}")
 	private String commonVar;
 	public String getName() {
 		return name;

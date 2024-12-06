@@ -12,8 +12,8 @@ public class MyController {
 	@Autowired
 	MyConfiguration c;
 
-	@GetMapping("/")
+	@GetMapping("/service2")
 	public String getData() {
-		return "Hello from:" + c.getName() + " number:" + c.getPhoneno() + " with common val:" + c.getCommonVar();
+		return "From ms-2";
 	}
 }
